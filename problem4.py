@@ -90,5 +90,11 @@ def Hessian(Z, X):
     '''
     #########################################
     ## INSERT YOUR CODE HERE
-    
+    X = X.T
+    MX = [0]*X.size
+    for m in range(X.size):
+        for i in range(X.shape[0]):
+            for j in range(X.shape[0]):
+                MX[i*X.shape[0]+j] = MX[i*X.shape[0]+j] + float(X[int(m/X.shape[0])][i]*X[int(m/X.shape[0])][j])
+    return sigmoid(Z)*(1-sigmoid(Z))
     #########################################
