@@ -90,11 +90,17 @@ def Hessian(Z, X):
     '''
     #########################################
     ## INSERT YOUR CODE HERE
-    X = X.T
-    MX = [0]*X.size
-    for m in range(X.size):
+    M = [0]*X.shape[1]
+
+    for m in range (X.shape[1]):
+        M_temp = []
         for i in range(X.shape[0]):
             for j in range(X.shape[0]):
-                MX[i*X.shape[0]+j] = MX[i*X.shape[0]+j] + float(X[int(m/X.shape[0])][i]*X[int(m/X.shape[0])][j])
-    return sigmoid(Z)*(1-sigmoid(Z))
+                M_temp = np.append(M_temp, float(X[i][m]*X[j][m]))
+        M[m] = M_temp*sigmoid(Z[0][m])*(1-sigmoid(Z[0][m]))
+    Result = np.ndarray(shape=X.shape, buffer=np.array(sum(M)))
+        
+
+
+    return Result
     #########################################
