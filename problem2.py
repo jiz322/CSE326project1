@@ -24,7 +24,7 @@ def loadData():
     ## INSERT YOUR CODE HERE
     data = np.loadtxt("./data/X.txt")
     X = data.transpose()
-    y = np.arange(X[0].size)
+    y = np.loadtxt("./data/y.txt")
     #########################################
     return X, y
 

@@ -25,6 +25,14 @@ def batch_gradient_descent(X, Y, X_test, Y_test, num_iters = 50, lr = 0.01, log=
     '''
     #########################################
     ## INSERT YOUR CODE HERE
+    theta = np.array([[0]*(y.size)])
+    Z = X*theta
+    A = sigmoid(Z)
+    l = loss(A, Y)
+    change_rate = 0.1
+    while change_rate > 0.0001:
+        Z = X*theta
+        theta = theta - lr* dtheta(Z, X, Y)
     #########################################
 
 def stochastic_gradient_descent(X, Y, X_test, Y_test, num_iters = 50, lr = 0.01, log=True):
