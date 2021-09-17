@@ -70,15 +70,14 @@ def dtheta(Z, X, Y):
     #########################################
     ## INSERT YOUR CODE HERE
     phi = sigmoid(Z)
-    result = np.ndarray((Y.size, Y.size))
-    X = X.T
+    result = np.ndarray(X.shape)
     for i in range(result.shape[0]):
-        if (phi[0][i]-0.5)*(Y[0][i]-0.5) > 0:
-            result[0,:] = (sigmoid(Z[0][i])-1)*X[i]
-        else:
-            result[1,:] = sigmoid(Z[0][i])*X[i]
-    
-    return np.asarray(np.mean(np.asmatrix(result).T, axis=1))
+        for j in range(result.shape[1]):
+            if (phi[0][j]-0.5)*(Y[0][j]-0.5) > 0:
+                result[i,j] = (sigmoid(Z[0][j])-1)*X[i][j]
+            else:
+                result[i,j] = sigmoid(Z[0][i])*X[i][j]
+    return np.asarray(np.mean(np.asmatrix(result), axis=1))
     #########################################
 
 def Hessian(Z, X):

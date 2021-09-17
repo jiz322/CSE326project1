@@ -25,14 +25,25 @@ def batch_gradient_descent(X, Y, X_test, Y_test, num_iters = 50, lr = 0.01, log=
     '''
     #########################################
     ## INSERT YOUR CODE HERE
-    theta = np.array([[0]*(y.size)])
-    Z = X*theta
-    A = sigmoid(Z)
-    l = loss(A, Y)
+    theta = np.array([[0]*(X.shape[0])]) #Y is tr_y
+    Y = np.array([Y])
+    Z = np.dot(theta, X)                    #X is tr_x
+    A = problem4.sigmoid(Z)
+    l = problem4.loss(A, Y)
     change_rate = 0.1
-    while change_rate > 0.0001:
-        Z = X*theta
-        theta = theta - lr* dtheta(Z, X, Y)
+    while change_rate > 0.001*lr:
+        Z = np.dot(theta, X) 
+        A = problem4.sigmoid(Z)
+        l = problem4.loss(A, Y)
+        print(l)
+        new_theta = theta - lr* problem4.dtheta(Z, X, Y).T
+        print("   ", problem4.dtheta(Z, X, Y)[0])
+        print("                  ", change_rate)
+        change_rate = np.mean(np.absolute(new_theta - theta))
+        theta = new_theta
+        
+        
+    return None, None
     #########################################
 
 def stochastic_gradient_descent(X, Y, X_test, Y_test, num_iters = 50, lr = 0.01, log=True):
@@ -50,6 +61,7 @@ def stochastic_gradient_descent(X, Y, X_test, Y_test, num_iters = 50, lr = 0.01,
     '''
     #########################################
     ## INSERT YOUR CODE HERE
+    return None, None
     #########################################
 
 
@@ -67,6 +79,7 @@ def Newton_method(X, Y, X_test, Y_test, num_iters = 50, log=True):
     '''
     #########################################
     ## INSERT YOUR CODE HERE
+    return None, None
     #########################################
 
 
