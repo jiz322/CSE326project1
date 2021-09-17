@@ -61,6 +61,8 @@ def stochastic_gradient_descent(X, Y, X_test, Y_test, num_iters = 50, lr = 0.01,
     '''
     #########################################
     ## INSERT YOUR CODE HERE
+
+    #
     return None, None
     #########################################
 
