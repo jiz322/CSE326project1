@@ -134,7 +134,7 @@ def Newton_method(X, Y, X_test, Y_test, num_iters = 50, log=True):
         l = problem4.loss(A, Y)
         Z = np.dot(theta, X) 
         A = problem4.sigmoid(Z)
-        new_theta = theta - lr* problem4.dtheta(Z, X, Y).T
+        new_theta = theta - 0.01* problem4.dtheta(Z, X, Y).T
     #    print(l)
     #    print("   ", problem4.dtheta(Z, X, Y)[0])
         #print("                  ", change_rate)
