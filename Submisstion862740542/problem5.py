@@ -10,7 +10,7 @@ from problem2 import *
 import numpy as np # linear algebra
 import pickle
 
-def batch_gradient_descent(X, Y, X_test, Y_test, num_iters = 50, lr = 0.01, log=True):
+def batch_gradient_descent(X, Y, X_test, Y_test, num_iters = 100, lr = 0.01, log=True):
     '''
     Train Logistic Regression using Gradient Descent
     X: d x m training sample vectors
@@ -54,7 +54,7 @@ def batch_gradient_descent(X, Y, X_test, Y_test, num_iters = 50, lr = 0.01, log=
     return theta, (l, l_test, norm)
     #########################################
 
-def stochastic_gradient_descent(X, Y, X_test, Y_test, num_iters = 50, lr = 0.01, log=True):
+def stochastic_gradient_descent(X, Y, X_test, Y_test, num_iters = 100, lr = 0.01, log=True):
     '''
     Train Logistic Regression using Gradient Descent
     X: d x m training sample vectors
@@ -87,12 +87,12 @@ def stochastic_gradient_descent(X, Y, X_test, Y_test, num_iters = 50, lr = 0.01,
         l = problem4.loss(A, Y)
         #change_rate = 0.1
         i = 0
-        while i < num_iters/2:
+        while i < num_iters:
             l = problem4.loss(A, Y)
             Z = np.dot(theta, X) 
             A = problem4.sigmoid(Z)
             new_theta = theta - lr* problem4.dtheta(Z, X, Y).T
-          #  print(l)
+        #    print(l)
         #    print("   ", problem4.dtheta(Z, X, Y)[0])
             #print("                  ", change_rate)
             # change_rate = np.mean(np.absolute(new_theta - theta))
@@ -123,33 +123,8 @@ def Newton_method(X, Y, X_test, Y_test, num_iters = 50, log=True):
     training_log: contains training_loss, test_loss, and norm of theta
     '''
     #########################################
-    theta = np.array([[1]*(X.shape[0])]) #Y is tr_y
-    Y = np.array([Y])
-    Z = np.dot(theta, X)                    #X is tr_x
-    A = problem4.sigmoid(Z)
-    l = problem4.loss(A, Y)
-    #change_rate = 0.1
-    i = 0
-    while i < num_iters:
-        l = problem4.loss(A, Y)
-        Z = np.dot(theta, X) 
-        A = problem4.sigmoid(Z)
-        new_theta = theta - lr* problem4.dtheta(Z, X, Y).T
-    #    print(l)
-    #    print("   ", problem4.dtheta(Z, X, Y)[0])
-        #print("                  ", change_rate)
-        # change_rate = np.mean(np.absolute(new_theta - theta))
-        theta = new_theta
-        i = i + 1
-    Y_test = np.array([Y_test])
-    Z_test = np.dot(theta, X_test)  
-    A_test = problem4.sigmoid(Z_test)
-    l_test = problem4.loss(A_test, Y_test)  
-    norm = np.linalg.norm(theta)
-    print("train lss: ", l)
-    print("test lss: ", l_test)
-    print("norm : ", norm)  #0.22
-    return theta, (l, l_test, norm)
+    ## INSERT YOUR CODE HERE
+    return None, None
     #########################################
 
 
